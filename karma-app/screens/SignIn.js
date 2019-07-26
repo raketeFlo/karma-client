@@ -1,18 +1,19 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Button } from 'react-native';
+import { AsyncStorage, Button } from 'react-native';
 
 const SignIn = (props) => {
-  const goToHome = () => {
+  const signInAsync = async () => {
+    await AsyncStorage.setItem('userToken', 'abc');
     props.navigation.navigate('Main');
   };
 
   return (
     <Button
-      onPress={goToHome}
-      title="Learn More"
+      onPress={signInAsync}
+      title="Sign In"
       color="#841584"
-      accessibilityLabel="Learn more about this purple button"
+      accessibilityLabel="Learn more about this button"
     />
   );
 };
