@@ -3,7 +3,12 @@ import Main from '../screens/Main';
 import LevelUp from '../screens/LevelUp';
 
 const AppNavigator = createStackNavigator({
-  Main,
+  Main: {
+    screen: Main,
+    navigationOptions: () => ({
+      headerTransparent: false,
+    }),
+  },
   LevelUp,
 });
 

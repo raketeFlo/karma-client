@@ -4,7 +4,6 @@ import AppContainer from './navigators';
 
 const App = () => {
   return (
-
     <AppContainer />
 
   );
