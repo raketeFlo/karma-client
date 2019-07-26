@@ -11,7 +11,7 @@ const AuthLoading = (props) => {
   // eslint-disable-next-line no-unused-vars
   const bootstrapAsync = async () => {
     const userToken = await AsyncStorage.getItem('userToken');
-    props.navigation.navigate(userToken ? 'Main' : 'SignIn');
+    props.navigation.navigate(userToken ? 'AppNavigator' : 'AuthNavigator');
   };
   bootstrapAsync();
 
