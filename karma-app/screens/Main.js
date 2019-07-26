@@ -1,8 +1,21 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Button, AsyncStorage } from 'react-native';
 
-const Main = () => {
-  return (<Text>Here is home!</Text>);
+const Main = (props) => {
+  const signOutAsync = async () => {
+    await AsyncStorage.clear();
+    props.navigation.navigate('SignIn');
+  };
+
+  return (
+    <Button
+      onPress={signOutAsync}
+      title="Sign Out"
+      color="#841584"
+      accessibilityLabel="Learn more about this button"
+    />
+  );
 };
 
 export default Main;

@@ -6,7 +6,7 @@ import AuthLoading from '../screens/AuthLoading';
 const AppContainer = createAppContainer(createSwitchNavigator(
   {
     AuthLoading,
-    AuthNavigator, // route to login
+    AuthNavigator,
     AppNavigator,
   },
   {
