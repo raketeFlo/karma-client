@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const LevelUp = () => {
+const AuthLoading = () => {
   return (null);
 };
 
-export default LevelUp;
+export default AuthLoading;
