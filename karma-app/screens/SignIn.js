@@ -4,14 +4,14 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import {
-  AsyncStorage, Button, Image, StyleSheet, View,
+  AsyncStorage, Button, Image, StyleSheet, View, KeyboardAvoidingView, TextInput,
 } from 'react-native';
 import uuid from 'uuid/v1';
-import { TextInput } from 'react-native-paper';
+
 
 const SignIn = (props) => {
-  const [text, setText] = useState('');
-  const [password, setPassword] = useState('');
+  const [userName, setUserName] = useState();
+  const [password, setPassword] = useState();
 
   const token = uuid();
   const signInAsync = async () => {
@@ -27,25 +27,36 @@ const SignIn = (props) => {
           source={require('../assets/karma-login.png')}
         />
       </View>
-      <View style={styles.bottomContainer}>
-        <TextInput
-          label='User Name'
-          value={text}
-          onChangeText={() => setText(text)}
-        />
-        <TextInput
-          label='Password'
-          value={password}
-          onChangeText={() => setPassword(password)}
-        />
-        <Button
-          onPress={signInAsync}
-          title='Sign In'
-          color='#841584'
-          accessibilityLabel='Click me to sign in'
-        />
-      </View>
+      <KeyboardAvoidingView
+        behavior='padding'
+        enabled
+        style={styles.bottomContainer}
+      >
+        <View>
+          <TextInput
+            placeholder='Username'
+            value={userName}
+            returnKeyType='next'
+            onChangeText={() => setUserName(userName)}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder='Password'
+            value={password}
+            onChangeText={() => setPassword(password)}
+            style={styles.input}
+          />
+          <Button
+            onPress={signInAsync}
+            title='Sign In'
+            color='#cc2e5d'
+            style={styles.button}
+            accessibilityLabel='Click me to sign in'
+          />
+        </View>
+      </KeyboardAvoidingView>
     </View>
+
   );
 };
 
@@ -68,8 +79,13 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     justifyContent: 'flex-end',
-    width: '90%',
+    width: '100%',
+  },
+  input: {
     padding: 10,
+    borderWidth: 1,
+    borderColor: 'black',
     margin: 10,
+    color: 'black',
   },
 });
