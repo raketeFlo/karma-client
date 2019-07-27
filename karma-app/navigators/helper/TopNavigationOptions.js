@@ -7,10 +7,6 @@ import {
 }
   from 'react-native';
 
-/* const signOutAsync = async () => {
-  await AsyncStorage.clear();
-  props.navigation.navigate('SignIn');
-}; */
 
 const TopNavigationOptions = navigation => ({
   headerLeft: (
@@ -38,5 +34,3 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
-
-// () => navigation.navigate('SignIn')
