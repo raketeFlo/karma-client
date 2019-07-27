@@ -2,25 +2,27 @@
 import React from 'react';
 import { View, Button, StyleSheet } from 'react-native';
 
-const FilterAction = () => {
+
+const FilterAction = ({ filter }) => {
+
   return (
     <View style={styles.container}>
       <Button
-        onPress={null}
+        onPress={() => filter('Easy')}
         title='Easy'
         color='#2ecc71'
         style={styles.button}
         accessibilityLabel='Click me to filter for easy actions'
       />
       <Button
-        onPress={null}
+        onPress={() => filter('Medium')}
         title='Medium'
         color='#e67e22'
         style={styles.button}
         accessibilityLabel='Click me to filter for medium actions'
       />
       <Button
-        onPress={null}
+        onPress={() => filter('Hard')}
         title='Hard'
         color='#e74c3c'
         style={styles.button}
@@ -39,9 +41,4 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
   },
-  button: {
-
-
-  },
-
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet, FlatList, Text, View,
+  StyleSheet, FlatList,
 } from 'react-native';
 import Action from './Action';
 
