@@ -13,6 +13,7 @@ const Main = (props) => {
     props.navigation.navigate('SignIn');
   };
 
+  // load all actions
   useEffect(() => {
     fetch('http://192.168.1.148:3001/actions')
       .then(response => response.json())
