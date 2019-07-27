@@ -8,7 +8,9 @@ const AppNavigator = createStackNavigator({
     screen: Main,
     navigationOptions: ({ navigation }) => TopNavigationOptions(navigation),
   },
-  LevelUp,
+  LevelUp: {
+    screen: LevelUp,
+  },
 });
 
 export default AppNavigator;
