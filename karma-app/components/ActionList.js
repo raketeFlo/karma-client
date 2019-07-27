@@ -10,7 +10,7 @@ const ActionList = ({ actions }) => {
       style={styles.container}
       data={actions}
       keyExtractor={item => item._id}
-      renderItem={({ item }) => <View><Text>{item.description}</Text></View>}
+      renderItem={({ item }) => <Action actions={item} />}
     />
   );
 };

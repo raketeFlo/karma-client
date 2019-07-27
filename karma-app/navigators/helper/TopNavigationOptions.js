@@ -2,7 +2,15 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { Avatar } from 'react-native-paper';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import {
+  AsyncStorage, StyleSheet, View, TouchableOpacity,
+}
+  from 'react-native';
+
+/* const signOutAsync = async () => {
+  await AsyncStorage.clear();
+  props.navigation.navigate('SignIn');
+}; */
 
 const TopNavigationOptions = navigation => ({
   headerLeft: (

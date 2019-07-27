@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {
-  AsyncStorage,
-} from 'react-native';
 import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
 
-const Main = (props) => {
+const Main = () => {
   const [actions, setActions] = useState([]);
-
-  const signOutAsync = async () => {
-    await AsyncStorage.clear();
-    props.navigation.navigate('SignIn');
-  };
 
   // load all actions
   useEffect(() => {

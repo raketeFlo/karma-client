@@ -50,7 +50,6 @@ const SignIn = (props) => {
             onPress={signInAsync}
             title='Sign In'
             color='#cc2e5d'
-            style={styles.button}
             accessibilityLabel='Click me to sign in'
           />
         </View>
