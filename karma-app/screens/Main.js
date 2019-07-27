@@ -7,9 +7,9 @@ import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
 
 const Main = (props) => {
-  console.log(props);
   // states
   const [actions, setActions] = useState([]);
+  const [user, setUser] = useState([]);
   const [filter, setFilter] = useState([]);
   const [progressWithOnComplete, setProgressWithOnComplete] = useState(0);
 
@@ -18,8 +18,6 @@ const Main = (props) => {
   const increase = (value) => {
     setProgressWithOnComplete(prev => prev + value);
   };
-
-
   const barWidth = Dimensions.get('screen').width - 150;
 
   // load all actions
@@ -34,13 +32,24 @@ const Main = (props) => {
       .catch(error => console.error(error));
   }, []);
 
+  // load user
+  useEffect(() => {
+    fetch('http://192.168.1.148:3001/user')
+      .then(response => response.json())
+      .then((data) => {
+        setUser(data);
+      })
+      // eslint-disable-next-line no-console
+      .catch(error => console.error(error));
+  }, []);
+
   // filter for actions
   const filterActions = (difficulty) => {
     const filteredActions = actions.filter(elements => elements.difficulty === difficulty);
     setFilter(filteredActions);
   };
 
-
+  console.log(user);
   return (
     <>
       <View style={styles.progessBar}>

@@ -19,6 +19,7 @@ const SignIn = (props) => {
     props.navigation.navigate('Main');
   };
 
+
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -32,27 +33,25 @@ const SignIn = (props) => {
         enabled
         style={styles.bottomContainer}
       >
-        <View>
-          <TextInput
-            placeholder='Username'
-            value={userName}
-            returnKeyType='next'
-            onChangeText={() => setUserName(userName)}
-            style={styles.input}
-          />
-          <TextInput
-            placeholder='Password'
-            value={password}
-            onChangeText={() => setPassword(password)}
-            style={styles.input}
-          />
-          <Button
-            onPress={signInAsync}
-            title='Sign In'
-            color='#cc2e5d'
-            accessibilityLabel='Click me to sign in'
-          />
-        </View>
+        <TextInput
+          placeholder='Username'
+          value={userName}
+          returnKeyType='next'
+          onChangeText={input => setUserName(input)}
+          style={styles.input}
+        />
+        <TextInput
+          placeholder='Password'
+          value={password}
+          onChangeText={input => setPassword(input)}
+          style={styles.input}
+        />
+        <Button
+          onPress={signInAsync}
+          title='Sign In'
+          color='#cc2e5d'
+          accessibilityLabel='Click me to sign in'
+        />
       </KeyboardAvoidingView>
     </View>
 
