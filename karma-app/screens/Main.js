@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import {
+  View, StyleSheet, Dimensions, Button,
+} from 'react-native';
+import ProgressBarAnimated from 'react-native-progress-bar-animated';
 import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
-import ProgressBar from '../components/ProgressBar';
 
 const Main = () => {
   const [actions, setActions] = useState([]);
   const [filter, setFilter] = useState([]);
+  const [progressWithOnComplete, setProgressWithOnComplete] = useState(0);
 
   // load all actions
   useEffect(() => {
@@ -25,10 +29,35 @@ const Main = () => {
     setFilter(filteredActions);
   };
 
+  // progressbar increase
+  const increase = (value) => {
+    const newValue = progressWithOnComplete + value;
+    setProgressWithOnComplete(newValue);
+  };
+  const barWidth = Dimensions.get('screen').width - 30;
+
 
   return (
     <>
-      <ProgressBar />
+      <View style={styles.container}>
+        <ProgressBarAnimated
+          width={barWidth}
+          value={progressWithOnComplete}
+          maxValue={100}
+          backgroundColor="#dc6286"
+          onComplete={() => {
+            setProgressWithOnComplete(0);
+          }}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.buttonInner}>
+            <Button
+              title="Increase 20%"
+              onPress={() => increase(50)}
+            />
+          </View>
+        </View>
+      </View>
       <FilterAction filter={filterActions} />
       <ActionList actions={filter} />
     </>
@@ -36,3 +65,13 @@ const Main = () => {
 };
 
 export default Main;
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 50,
+    padding: 15,
+  },
+  buttonContainer: {
+    marginTop: 15,
+  },
+});
