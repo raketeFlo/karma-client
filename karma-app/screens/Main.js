@@ -1,5 +1,3 @@
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import {
   AsyncStorage,
@@ -18,7 +16,8 @@ const Main = (props) => {
   useEffect(() => {
     fetch('http://192.168.1.148:3001/actions')
       .then(response => response.json())
-      .then(actions => setActions(actions))
+      .then(data => setActions(data))
+      // eslint-disable-next-line no-console
       .catch(error => console.error(error));
   }, []);
 
