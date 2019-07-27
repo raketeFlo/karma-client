@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
+import ProgressBar from '../components/ProgressBar';
 
 const Main = () => {
   const [actions, setActions] = useState([]);
@@ -24,8 +25,10 @@ const Main = () => {
     setFilter(filteredActions);
   };
 
+
   return (
     <>
+      <ProgressBar />
       <FilterAction filter={filterActions} />
       <ActionList actions={filter} />
     </>

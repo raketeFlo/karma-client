@@ -10,21 +10,21 @@ const FilterAction = ({ filter }) => {
       <Button
         onPress={() => filter('Easy')}
         title='Easy'
-        color='#2ecc71'
+        color='#dc6286'
         style={styles.button}
         accessibilityLabel='Click me to filter for easy actions'
       />
       <Button
         onPress={() => filter('Medium')}
         title='Medium'
-        color='#e67e22'
+        color='#dc6286'
         style={styles.button}
         accessibilityLabel='Click me to filter for medium actions'
       />
       <Button
         onPress={() => filter('Hard')}
         title='Hard'
-        color='#e74c3c'
+        color='#dc6286'
         style={styles.button}
         accessibilityLabel='Click me to filter for hard actions'
       />
