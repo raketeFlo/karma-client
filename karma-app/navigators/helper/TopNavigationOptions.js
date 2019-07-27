@@ -17,7 +17,7 @@ const TopNavigationOptions = navigation => ({
     <Avatar.Image style={styles.avatar} size={50} source={require('../../assets/karma-login.png')} />
   ),
   headerRight: (
-    <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+    <TouchableOpacity onPress={async () => { await AsyncStorage.clear(); navigation.navigate('SignIn'); }}>
       <View style={{ marginRight: 30 }}>
         <Ionicons name="ios-log-out" size={25} />
       </View>
@@ -38,3 +38,5 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
+
+// () => navigation.navigate('SignIn')
