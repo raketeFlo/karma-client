@@ -4,13 +4,14 @@ import {
 } from 'react-native';
 import Action from './Action';
 
-const ActionList = ({ actions }) => {
+const ActionList = ({ actions, levelUp }) => {
+
   return (
     <FlatList
       style={styles.container}
       data={actions}
       keyExtractor={item => item._id}
-      renderItem={({ item }) => <Action actions={item} />}
+      renderItem={({ item }) => <Action actions={item} levelUp={levelUp} />}
     />
   );
 };

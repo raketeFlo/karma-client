@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View, StyleSheet, Dimensions, Button,
-} from 'react-native';
 import ProgressBarAnimated from 'react-native-progress-bar-animated';
+import {
+  Dimensions, View, Text,
+} from 'react-native';
 import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
 
 const Main = () => {
+  // states
   const [actions, setActions] = useState([]);
   const [filter, setFilter] = useState([]);
   const [progressWithOnComplete, setProgressWithOnComplete] = useState(0);
+
+
+  // progressbar increase
+  const increase = (value) => {
+    setProgressWithOnComplete(progressWithOnComplete + value);
+  };
+  //const barWidth = Dimensions.get('screen').width - 30;
+
 
   // load all actions
   useEffect(() => {
@@ -29,18 +38,10 @@ const Main = () => {
     setFilter(filteredActions);
   };
 
-  // progressbar increase
-  const increase = (value) => {
-    const newValue = progressWithOnComplete + value;
-    setProgressWithOnComplete(newValue);
-  };
-  const barWidth = Dimensions.get('screen').width - 30;
-
-
   return (
     <>
-      <View style={styles.container}>
-        <ProgressBarAnimated
+      <View>
+        {/*   <ProgressBarAnimated
           width={barWidth}
           value={progressWithOnComplete}
           maxValue={100}
@@ -48,30 +49,15 @@ const Main = () => {
           onComplete={() => {
             setProgressWithOnComplete(0);
           }}
-        />
-        <View style={styles.buttonContainer}>
-          <View style={styles.buttonInner}>
-            <Button
-              title="Increase 20%"
-              onPress={() => increase(50)}
-            />
-          </View>
-        </View>
+        /> */
+        }
+        <Text>{progressWithOnComplete}</Text>
       </View>
       <FilterAction filter={filterActions} />
-      <ActionList actions={filter} />
+      <ActionList actions={filter} levelUp={increase} />
     </>
   );
 };
 
 export default Main;
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 50,
-    padding: 15,
-  },
-  buttonContainer: {
-    marginTop: 15,
-  },
-});

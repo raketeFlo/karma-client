@@ -1,11 +1,14 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
+import {
+  TouchableOpacity,
+} from 'react-native';
 import { Card, Paragraph } from 'react-native-paper';
 
 
-const Action = ({ actions }) => {
+const Action = ({ actions, levelUp }) => {
+
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => levelUp(actions.exp_points)}>
       <Card>
         <Card.Content>
           <Paragraph>{actions.description}</Paragraph>
