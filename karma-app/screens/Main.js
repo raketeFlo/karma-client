@@ -2,8 +2,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import {
-  AsyncStorage, StyleSheet, FlatList, Text, View,
+  AsyncStorage,
 } from 'react-native';
+import ActionList from '../components/ActionList';
+import FilterAction from '../components/FilterAction';
 
 const Main = (props) => {
   const [actions, setActions] = useState([]);
@@ -20,23 +22,12 @@ const Main = (props) => {
       .catch(error => console.error(error));
   }, []);
 
-
   return (
-    <FlatList
-      style={styles.container}
-      data={actions}
-      keyExtractor={item => item._id}
-      renderItem={({ item }) => <View><Text>{item.description}</Text></View>}
-    />
+    <>
+      <FilterAction />
+      <ActionList actions={actions} />
+    </>
   );
 };
 
 export default Main;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#f2efed',
-  },
-});
