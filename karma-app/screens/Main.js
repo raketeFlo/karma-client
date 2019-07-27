@@ -15,10 +15,11 @@ const Main = () => {
 
   // progressbar increase
   const increase = (value) => {
-    setProgressWithOnComplete(progressWithOnComplete + value);
+    setProgressWithOnComplete(prev => prev + value);
   };
-  //const barWidth = Dimensions.get('screen').width - 30;
 
+
+  const barWidth = Dimensions.get('screen').width - 30;
 
   // load all actions
   useEffect(() => {
@@ -41,7 +42,7 @@ const Main = () => {
   return (
     <>
       <View>
-        {/*   <ProgressBarAnimated
+        <ProgressBarAnimated
           width={barWidth}
           value={progressWithOnComplete}
           maxValue={100}
@@ -49,9 +50,7 @@ const Main = () => {
           onComplete={() => {
             setProgressWithOnComplete(0);
           }}
-        /> */
-        }
-        <Text>{progressWithOnComplete}</Text>
+        />
       </View>
       <FilterAction filter={filterActions} />
       <ActionList actions={filter} levelUp={increase} />
@@ -60,4 +59,3 @@ const Main = () => {
 };
 
 export default Main;
-
