@@ -45,13 +45,16 @@ const SignIn = (props) => {
           value={password}
           onChangeText={input => setPassword(input)}
           style={styles.input}
+          secureTextEntry={true}
         />
-        <Button
-          onPress={signInAsync}
-          title='Sign In'
-          color='#cc2e5d'
-          accessibilityLabel='Click me to sign in'
-        />
+        <View style={styles.button}>
+          <Button
+            onPress={signInAsync}
+            title='Sign In'
+            color='#cc2e5d'
+            accessibilityLabel='Click me to sign in'
+          />
+        </View>
       </KeyboardAvoidingView>
     </View>
 
@@ -85,5 +88,8 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     margin: 10,
     color: 'black',
+  },
+  button: {
+    padding: 10,
   },
 });
