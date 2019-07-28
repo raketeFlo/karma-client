@@ -5,10 +5,10 @@ import {
 import { Card, Paragraph } from 'react-native-paper';
 
 
-const Action = ({ actions, levelUp }) => {
+const Action = ({ actions, addExp }) => {
 
   return (
-    <TouchableOpacity onPress={() => levelUp(actions.exp_points)}>
+    <TouchableOpacity onPress={() => addExp(actions.exp_points)}>
       <Card>
         <Card.Content>
           <Paragraph>{actions.description}</Paragraph>

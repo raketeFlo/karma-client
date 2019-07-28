@@ -11,18 +11,35 @@ const Main = (props) => {
   const [actions, setActions] = useState([]);
   const [user, setUser] = useState([]);
   const [filter, setFilter] = useState([]);
-  const [progressWithOnComplete, setProgressWithOnComplete] = useState(0);
+  const [progressWithOnComplete, setProgressWithOnComplete] = useState(user.curr_exp);
 
-
-  // progressbar increase
-  const increase = (value) => {
-    setProgressWithOnComplete(prev => prev + value);
-  };
+  // set width of progress bar
   const barWidth = Dimensions.get('screen').width - 150;
 
+  // progressbar increase
+  const increaseExp = (value) => {
+    const formatValue = value / user.curr_level;
+    const updatedValue = { curr_exp: formatValue + user.curr_exp };
+    const updatedUser = Object.assign(user, updatedValue);
+    setUser(updatedUser);
+    updateUser(updatedUser);
+    setProgressWithOnComplete(prev => prev + formatValue);
+  };
+
+
+  // level up
+  const nextLevel = () => {
+    const updatedValue = { curr_level: ++user.curr_level };
+    const updatedUser = Object.assign(user, updatedValue);
+    setUser(updatedUser);
+    updateUser(updatedUser);
+  }
+
+
   // load all actions
+  // IP wlan CW: 192.168.1.148
   useEffect(() => {
-    fetch('http://192.168.1.148:3001/actions')
+    fetch('http://192.168.1.131:3001/actions')
       .then(response => response.json())
       .then((data) => {
         setActions(data);
@@ -34,14 +51,31 @@ const Main = (props) => {
 
   // load user
   useEffect(() => {
-    fetch('http://192.168.1.148:3001/user')
+    fetch('http://192.168.1.131:3001/user')
       .then(response => response.json())
       .then((data) => {
-        setUser(data);
+        console.log('loaded', data[0]);
+        setUser(data[0]);
+        setProgressWithOnComplete(data[0].curr_exp);
       })
       // eslint-disable-next-line no-console
       .catch(error => console.error(error));
   }, []);
+
+  // update user
+  const updateUser = (data) => {
+    fetch('http://192.168.1.131:3001/user', {
+      method: 'PUT',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then(response => response.json())
+      // eslint-disable-next-line no-console
+      .then(updatedUser => setUser(updatedUser))
+      // eslint-disable-next-line no-console
+      .catch(error => console.error(error));
+  };
 
   // filter for actions
   const filterActions = (difficulty) => {
@@ -49,11 +83,14 @@ const Main = (props) => {
     setFilter(filteredActions);
   };
 
-  console.log(user);
   return (
     <>
       <View style={styles.progessBar}>
-        <Text>Lvl</Text>
+        <Text>
+          Lvl
+          {' '}
+          {user.curr_level}
+        </Text>
         <ProgressBarAnimated
           width={barWidth}
           value={progressWithOnComplete}
@@ -62,12 +99,17 @@ const Main = (props) => {
           onComplete={() => {
             props.navigation.navigate('LevelUp');
             setProgressWithOnComplete(0);
+            nextLevel();
           }}
         />
-        <Text>Lvl</Text>
+        <Text>
+          Lvl
+          {' '}
+          {user.curr_level + 1}
+        </Text>
       </View>
       <FilterAction filter={filterActions} />
-      <ActionList actions={filter} levelUp={increase} />
+      <ActionList actions={filter} addExp={increaseExp} />
     </>
   );
 };
