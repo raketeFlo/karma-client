@@ -18,18 +18,17 @@ const Main = (props) => {
 
   // progressbar increase
   const increaseExp = (value) => {
-    const formatValue = value / user.curr_level;
-    const updatedValue = { curr_exp: formatValue + user.curr_exp };
+    const updatedValue = { curr_exp: value + user.curr_exp };
     const updatedUser = Object.assign(user, updatedValue);
     setUser(updatedUser);
     updateUser(updatedUser);
-    setProgressWithOnComplete(prev => prev + formatValue);
+    setProgressWithOnComplete(prev => prev + value);
   };
 
 
   // level up
   const nextLevel = () => {
-    const updatedValue = { curr_level: ++user.curr_level };
+    const updatedValue = { curr_level: ++user.curr_level, curr_exp: 0 };
     const updatedUser = Object.assign(user, updatedValue);
     setUser(updatedUser);
     updateUser(updatedUser);

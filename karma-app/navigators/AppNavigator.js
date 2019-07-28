@@ -10,7 +10,10 @@ const AppNavigator = createStackNavigator({
   },
   LevelUp: {
     screen: LevelUp,
-  },
+    navigationOptions: () => ({
+      headerTransparent: true,
+    }),
+  }
 });
 
 export default AppNavigator;
