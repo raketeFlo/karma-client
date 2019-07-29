@@ -72,7 +72,7 @@ const Main = (props) => {
         // load main.js after 1500ms
         setTimeout(() => {
           setLoading(false);
-        }, 1500);
+        }, 1000);
 
       })
       // eslint-disable-next-line no-console
