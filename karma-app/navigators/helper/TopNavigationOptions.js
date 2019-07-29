@@ -11,7 +11,7 @@ import {
 
 const TopNavigationOptions = navigation => ({
   headerLeft: (
-    <Avatar.Image style={styles.avatar} size={50} source={avatar} />
+    <Avatar.Image style={styles.avatar} size={38} source={avatar} />
   ),
   headerRight: (
     <TouchableOpacity onPress={async () => { await AsyncStorage.clear(); navigation.navigate('SignIn'); }}>
