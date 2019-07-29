@@ -81,8 +81,9 @@ const Main = (props) => {
     setFilter(filteredActions);
   };
 
-  return (
-    <>
+  // create Prorgressbar
+  const createProgressbar = () => {
+    return (
       <View style={styles.progessBar}>
         <Text>
           Lvl
@@ -106,6 +107,12 @@ const Main = (props) => {
           {user.curr_level + 1}
         </Text>
       </View>
+    )
+  }
+
+  return (
+    <>
+      {createProgressbar()}
       <FilterAction filter={filterActions} />
       <ActionList actions={filter} addExp={increaseExp} />
     </>
