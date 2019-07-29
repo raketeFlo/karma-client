@@ -21,18 +21,30 @@ const Main = (props) => {
   // progressbar increase
   const increaseExp = (value) => {
     const updatedValue = { curr_exp: value + user.curr_exp };
-    const updatedUser = Object.assign(user, updatedValue);
-    setUser(updatedUser);
-    updateUser(updatedUser);
-    setProgressWithOnComplete(prev => prev + value);
+    if (updatedValue.curr_exp <= 100) {
+      const updatedUser = Object.assign(user, updatedValue);
+      // add experience to progressbar
+      setProgressWithOnComplete(prev => prev + value);
+      // update current experience of user
+      setUser(updatedUser);
+      // update current experience of user in database
+      updateUser(updatedUser);
+    } else {
+      const remainingExp = updatedValue.curr_exp - 100;
+      nextLevel(remainingExp);
+      // set progessbar to the overachieved points
+      setProgressWithOnComplete(remainingExp);
+      props.navigation.navigate('LevelUp');
+    }
   };
 
 
   // level up
-  const nextLevel = () => {
-    const updatedValue = { curr_level: ++user.curr_level, curr_exp: 0 };
+  const nextLevel = (exp) => {
+    const updatedValue = { curr_level: ++user.curr_level, curr_exp: exp };
     const updatedUser = Object.assign(user, updatedValue);
     setUser(updatedUser);
+    // update new level and experience of user
     updateUser(updatedUser);
   }
 
@@ -61,7 +73,7 @@ const Main = (props) => {
   }, []);
 
 
-  // update user
+  // update current user experience and level
   const updateUser = (data) => {
     fetch(`${URL}/user`, {
       method: 'PUT',
@@ -82,7 +94,7 @@ const Main = (props) => {
     setFilter(filteredActions);
   };
 
-  // create Prorgressbar
+  // create Progressbar
   const createProgressbar = () => {
     return (
       <View style={styles.progessBar}>
@@ -99,7 +111,8 @@ const Main = (props) => {
           onComplete={() => {
             props.navigation.navigate('LevelUp');
             setProgressWithOnComplete(0);
-            nextLevel();
+            // set user experience to 0
+            nextLevel(0);
           }}
         />
         <Text>
