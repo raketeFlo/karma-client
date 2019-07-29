@@ -36,7 +36,7 @@ const Main = (props) => {
 
   // load user
   useEffect(() => {
-    fetch('http://192.168.1.148:3001/user')
+    fetch('process.env.REACT_APP_HOST/user')
       .then(response => response.json())
       .then((data) => {
         setUser(data[0]);
@@ -49,7 +49,7 @@ const Main = (props) => {
   // load all actions
   // IP wlan home: 192.168.1.131
   useEffect(() => {
-    fetch('http://192.168.1.148:3001/actions')
+    fetch('process.env.REACT_APP_HOST/actions')
       .then(response => response.json())
       .then((data) => {
         setActions(data);
@@ -62,7 +62,7 @@ const Main = (props) => {
 
   // update user
   const updateUser = (data) => {
-    fetch('http://192.168.1.148:3001/user', {
+    fetch('process.env.REACT_APP_HOST/user', {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
