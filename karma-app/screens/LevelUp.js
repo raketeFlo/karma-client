@@ -26,9 +26,6 @@ const LevelUp = (props) => {
   );
 };
 
-
-export default LevelUp;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -55,3 +52,5 @@ const styles = StyleSheet.create({
   },
 
 });
+
+export default LevelUp;

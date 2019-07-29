@@ -20,8 +20,6 @@ const Action = ({ actions, addExp }) => {
   );
 };
 
-export default Action;
-
 const styles = StyleSheet.create({
   container: {
     margin: 10,
@@ -35,3 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
+export default Action;

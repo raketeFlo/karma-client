@@ -112,8 +112,6 @@ const Main = (props) => {
   );
 };
 
-export default Main;
-
 const styles = StyleSheet.create({
   progessBar: {
     flexDirection: 'row',
@@ -122,3 +120,5 @@ const styles = StyleSheet.create({
     padding: 15,
   },
 });
+
+export default Main;

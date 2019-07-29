@@ -16,8 +16,6 @@ const ActionList = ({ actions, addExp }) => {
   );
 };
 
-export default ActionList;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -25,3 +23,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2efed',
   },
 });
+
+export default ActionList;

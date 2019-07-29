@@ -32,8 +32,6 @@ const FilterAction = ({ filter }) => {
   );
 };
 
-export default FilterAction;
-
 const styles = StyleSheet.create({
   container: {
     marginTop: 20,
@@ -42,3 +40,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
   },
 });
+
+export default FilterAction;
