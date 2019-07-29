@@ -11,15 +11,16 @@ import {
 
 const TopNavigationOptions = navigation => ({
   headerLeft: (
-    <Avatar.Image style={styles.avatar} size={38} source={avatar} />
+    <Avatar.Image style={styles.avatar} size={50} source={avatar} />
   ),
   headerRight: (
     <TouchableOpacity onPress={async () => { await AsyncStorage.clear(); navigation.navigate('SignIn'); }}>
       <View style={{ marginRight: 30 }}>
-        <Ionicons name="ios-log-out" size={25} />
+        <Ionicons name="ios-log-out" size={30} />
       </View>
     </TouchableOpacity>
   ),
+  headerStyle: { height: 70 },
 });
 
 export default TopNavigationOptions;
