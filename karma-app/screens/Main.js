@@ -7,6 +7,8 @@ import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
 
 const Main = (props) => {
+  // localhost
+  const URL = 'http://192.168.1.148:3001';
   // states
   const [actions, setActions] = useState([]);
   const [user, setUser] = useState([]);
@@ -36,7 +38,7 @@ const Main = (props) => {
 
   // load user
   useEffect(() => {
-    fetch('process.env.REACT_APP_HOST/user')
+    fetch(`${URL}/user`)
       .then(response => response.json())
       .then((data) => {
         setUser(data[0]);
@@ -47,9 +49,8 @@ const Main = (props) => {
   }, []);
 
   // load all actions
-  // IP wlan home: 192.168.1.131
   useEffect(() => {
-    fetch('process.env.REACT_APP_HOST/actions')
+    fetch(`${URL}/actions`)
       .then(response => response.json())
       .then((data) => {
         setActions(data);
@@ -62,7 +63,7 @@ const Main = (props) => {
 
   // update user
   const updateUser = (data) => {
-    fetch('process.env.REACT_APP_HOST/user', {
+    fetch(`${URL}/user`, {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
