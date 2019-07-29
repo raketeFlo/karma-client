@@ -1,7 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-const avatar = require('../../assets/karma-login.png');
+const avatar = require('../../assets/avatar.png');
 import { Avatar } from 'react-native-paper';
 import {
   AsyncStorage, StyleSheet, View, TouchableOpacity,
@@ -33,5 +33,13 @@ const styles = StyleSheet.create({
   },
   avatar: {
     marginLeft: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
 });
