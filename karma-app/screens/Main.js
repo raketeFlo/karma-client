@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
+import Splash from './Splash';
 
 const Main = (props) => {
   // localhost
@@ -14,6 +15,7 @@ const Main = (props) => {
   const [user, setUser] = useState([]);
   const [filter, setFilter] = useState([]);
   const [progressWithOnComplete, setProgressWithOnComplete] = useState(user.curr_exp);
+  const [loading, setLoading] = useState(true);
 
   // set width of progress bar
   const barWidth = Dimensions.get('screen').width - 150;
@@ -67,6 +69,11 @@ const Main = (props) => {
       .then((data) => {
         setActions(data);
         setFilter(data);
+        // load main.js after 1500ms
+        setTimeout(() => {
+          setLoading(false);
+        }, 1500);
+
       })
       // eslint-disable-next-line no-console
       .catch(error => console.error(error));
@@ -124,13 +131,17 @@ const Main = (props) => {
     )
   }
 
-  return (
-    <>
-      {createProgressbar()}
-      <FilterAction filter={filterActions} />
-      <ActionList actions={filter} addExp={increaseExp} />
-    </>
-  );
+  if (loading === true) {
+    return <Splash />
+  } else {
+    return (
+      <>
+        {createProgressbar()}
+        <FilterAction filter={filterActions} />
+        <ActionList actions={filter} addExp={increaseExp} />
+      </>
+    );
+  }
 };
 
 const styles = StyleSheet.create({
