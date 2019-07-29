@@ -7,6 +7,7 @@ import {
   AsyncStorage, Button, Image, StyleSheet, View, KeyboardAvoidingView, TextInput,
 } from 'react-native';
 import uuid from 'uuid/v1';
+const logo = require('../assets/karma-login.png');
 
 
 const SignIn = (props) => {
@@ -25,7 +26,7 @@ const SignIn = (props) => {
       <View style={styles.topContainer}>
         <Image
           style={styles.image}
-          source={require('../assets/karma-login.png')}
+          source={logo}
         />
       </View>
       <KeyboardAvoidingView

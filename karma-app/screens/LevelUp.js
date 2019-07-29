@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Text, Image, View, StyleSheet, Button } from 'react-native';
+const logo = require('../assets/karma-logo.png');
 
 
 
@@ -10,7 +11,7 @@ const LevelUp = (props) => {
         <Text h1 style={styles.textUp}>WELL DONE</Text>
         <Image
           style={styles.image}
-          source={require('../assets/karma-logo.png')}
+          source={logo}
         />
         <Text h2 style={styles.textDown}>Your Karma improved to the next level!</Text>
         <Button

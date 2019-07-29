@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
+const avatar = require('../../assets/karma-login.png');
 import { Avatar } from 'react-native-paper';
 import {
   AsyncStorage, StyleSheet, View, TouchableOpacity,
@@ -10,7 +11,7 @@ import {
 
 const TopNavigationOptions = navigation => ({
   headerLeft: (
-    <Avatar.Image style={styles.avatar} size={50} source={require('../../assets/karma-login.png')} />
+    <Avatar.Image style={styles.avatar} size={50} source={avatar} />
   ),
   headerRight: (
     <TouchableOpacity onPress={async () => { await AsyncStorage.clear(); navigation.navigate('SignIn'); }}>
