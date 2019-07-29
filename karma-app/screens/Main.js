@@ -34,11 +34,22 @@ const Main = (props) => {
     updateUser(updatedUser);
   }
 
+  // load user
+  useEffect(() => {
+    fetch('http://192.168.1.148:3001/user')
+      .then(response => response.json())
+      .then((data) => {
+        setUser(data[0]);
+        setProgressWithOnComplete(data[0].curr_exp);
+      })
+      // eslint-disable-next-line no-console
+      .catch(error => console.error(error));
+  }, []);
 
   // load all actions
-  // IP wlan CW: 192.168.1.148
+  // IP wlan home: 192.168.1.131
   useEffect(() => {
-    fetch('http://192.168.1.131:3001/actions')
+    fetch('http://192.168.1.148:3001/actions')
       .then(response => response.json())
       .then((data) => {
         setActions(data);
@@ -48,22 +59,10 @@ const Main = (props) => {
       .catch(error => console.error(error));
   }, []);
 
-  // load user
-  useEffect(() => {
-    fetch('http://192.168.1.131:3001/user')
-      .then(response => response.json())
-      .then((data) => {
-        console.log('loaded', data[0]);
-        setUser(data[0]);
-        setProgressWithOnComplete(data[0].curr_exp);
-      })
-      // eslint-disable-next-line no-console
-      .catch(error => console.error(error));
-  }, []);
 
   // update user
   const updateUser = (data) => {
-    fetch('http://192.168.1.131:3001/user', {
+    fetch('http://192.168.1.148:3001/user', {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
