@@ -60,7 +60,7 @@ const Main = ({ navigation }) => {
 
   // load user
   useEffect(() => {
-    fetch(`${URL}/user`)
+    fetch(`${URL}/user/${userName}`)
       .then(response => response.json())
       .then((data) => {
         setUser(data[0]);
