@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, Image, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button } from 'react-native';
 import LottieView from 'lottie-react-native'
-const logo = require('../assets/karma-logo.png');
 const animationData = require('../assets/lottie-files/2056-gagaha.json');
 
 

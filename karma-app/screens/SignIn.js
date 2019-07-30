@@ -19,7 +19,7 @@ const SignIn = ({ navigation }) => {
     fetch(`${URL}/sign-in`, {
       headers: {
         'Authorization': `Basic ${encodedData}`,
-        'Content-Type': 'aaplication/json',
+        'Content-Type': 'application/json',
       }
     })
       .then(response => response.json())
@@ -39,11 +39,11 @@ const SignIn = ({ navigation }) => {
       .catch(error => console.error(error));
   };
 
-
   const token = uuid();
   const signInAsync = async () => {
     await AsyncStorage.setItem('userToken', token);
-    navigation.navigate('Main');
+    await AsyncStorage.setItem('userName', userName);
+    // navigation.navigate('Main');
   };
 
   const passUserIdToMain = () => {

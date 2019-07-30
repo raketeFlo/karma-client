@@ -6,7 +6,9 @@ import TopNavigationOptions from './helper/TopNavigationOptions';
 const AppNavigator = createStackNavigator({
   Main: {
     screen: Main,
-    navigationOptions: ({ navigation }) => TopNavigationOptions(navigation),
+    navigationOptions: ({ navigation }) => {
+      return TopNavigationOptions(navigation)
+    },
   },
   LevelUp: {
     screen: LevelUp,

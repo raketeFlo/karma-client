@@ -18,7 +18,7 @@ const Main = ({ navigation }) => {
   const [progressWithOnComplete, setProgressWithOnComplete] = useState(user.curr_exp);
   const [loading, setLoading] = useState(true);
 
-  // get userID and userToken after login
+  // get userID after login
   const userName = navigation.getParam('userName', 'No-USER');
 
   // set width of progress bar
@@ -61,8 +61,10 @@ const Main = ({ navigation }) => {
     fetch(`${URL}/user/${userName}`)
       .then(response => response.json())
       .then((data) => {
-        setUser(data[0]);
-        setProgressWithOnComplete(data[0].curr_exp);
+        if (data[0]) {
+          setUser(data[0]);
+          setProgressWithOnComplete(data[0].curr_exp);
+        }
       })
       // eslint-disable-next-line no-console
       .catch(error => console.error(error));
