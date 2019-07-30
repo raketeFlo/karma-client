@@ -2,17 +2,43 @@
 /* eslint-disable global-require */
 /* eslint-disable jsx-quotes */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AsyncStorage, Button, Image, StyleSheet, View, KeyboardAvoidingView, TextInput,
 } from 'react-native';
 import uuid from 'uuid/v1';
+import base64 from 'react-native-base64'
 const logo = require('../assets/karma-login.png');
+// localhost
+const URL = 'http://192.168.1.148:3001'; //131 -> Home
 
 
 const SignIn = (props) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+
+  // check username + password
+  const userCheck = () => {
+    const encodedData = base64.encode(`${userName}:${password}`);
+    fetch(`${URL}/sign-in`, {
+      headers: {
+        'Authorization': `Basic ${encodedData}`,
+        'Content-Type': 'aaplication/json',
+      }
+    })
+      .then(response => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.error) {
+          alert('wrong password or username');
+        } else {
+          handleSubmit();
+        }
+      })
+      // eslint-disable-next-line no-console
+      .catch(error => console.error(error));
+  };
+
 
   const token = uuid();
   const signInAsync = async () => {
@@ -65,7 +91,7 @@ const SignIn = (props) => {
         />
         <View style={styles.button}>
           <Button
-            onPress={handleSubmit}
+            onPress={userCheck}
             title='Sign In'
             color='#cc2e5d'
             accessibilityLabel='Click me to sign in'

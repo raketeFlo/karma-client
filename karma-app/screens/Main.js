@@ -20,10 +20,6 @@ const Main = ({ navigation }) => {
 
   // get userID and userToken after login
   const userName = navigation.getParam('userName', 'No-USER');
-  const password = navigation.getParam('password', 'No-PASSWORD');
-  const token = navigation.getParam('token', 'No-TOKEn');
-
-  console.log(userName, password, token);
 
   // set width of progress bar
   const barWidth = Dimensions.get('screen').width - 150;
@@ -124,7 +120,7 @@ const Main = ({ navigation }) => {
           maxValue={100}
           backgroundColor="#dc6286"
           onComplete={() => {
-            props.navigation.navigate('LevelUp');
+            navigation.navigate('LevelUp');
             setProgressWithOnComplete(0);
             // set user experience to 0
             nextLevel(0);
