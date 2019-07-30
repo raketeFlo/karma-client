@@ -13,7 +13,7 @@ const logo = require('../assets/karma-login.png');
 const URL = 'http://192.168.1.148:3001'; //131 -> Home
 
 
-const SignIn = (props) => {
+const SignIn = ({ navigation }) => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,12 +27,13 @@ const SignIn = (props) => {
       }
     })
       .then(response => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data.error) {
-          alert('wrong password or username');
+      .then((username) => {
+        if (username.fail) {
+          alert('wrong password or username')
+          navigation.navigate('Sign-In');
         } else {
-          handleSubmit();
+          passUserId();
+          signInAsync();
         }
       })
       // eslint-disable-next-line no-console
@@ -43,14 +44,12 @@ const SignIn = (props) => {
   const token = uuid();
   const signInAsync = async () => {
     await AsyncStorage.setItem('userToken', token);
-    props.navigation.navigate('Main');
+    navigation.navigate('Main');
   };
 
   const passUserId = () => {
-    props.navigation.navigate('Main', {
+    navigation.navigate('Main', {
       userName,
-      password,
-      token,
     })
   }
 
@@ -58,8 +57,7 @@ const SignIn = (props) => {
     e.preventDefault();
     setUserName(userName);
     setPassword(password);
-    signInAsync();
-    passUserId();
+    userCheck();
   }
 
   return (
@@ -91,7 +89,7 @@ const SignIn = (props) => {
         />
         <View style={styles.button}>
           <Button
-            onPress={userCheck}
+            onPress={handleSubmit}
             title='Sign In'
             color='#cc2e5d'
             accessibilityLabel='Click me to sign in'
