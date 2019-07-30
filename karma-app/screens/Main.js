@@ -26,11 +26,13 @@ const Main = ({ navigation }) => {
 
   // progressbar increase
   const increaseExp = (value) => {
-    const updatedValue = { curr_exp: value + user.curr_exp };
+    // lower gained exp points per increased level
+    const reducedValue = Math.floor(value / user.curr_level);
+    const updatedValue = { curr_exp: reducedValue + user.curr_exp };
     if (updatedValue.curr_exp <= 100) {
       const updatedUser = Object.assign(user, updatedValue);
       // add experience to progressbar
-      setProgressWithOnComplete(prev => prev + value);
+      setProgressWithOnComplete(prev => prev + reducedValue);
       // update current experience of user
       setUser(updatedUser);
       // update current experience of user in database

@@ -2,7 +2,7 @@
 /* eslint-disable global-require */
 /* eslint-disable jsx-quotes */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   AsyncStorage, Button, Image, StyleSheet, View, KeyboardAvoidingView, TextInput,
 } from 'react-native';
