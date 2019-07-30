@@ -38,10 +38,10 @@ const Main = ({ navigation }) => {
       // update current experience of user in database
       updateUser(updatedUser);
     } else {
-      const remainingExp = updatedValue.curr_exp - 100;
-      nextLevel(remainingExp);
-      // set progessbar to the overachieved points
-      setProgressWithOnComplete(remainingExp);
+      //set user experience to 0
+      nextLevel(0);
+      // set progessbar to 0
+      setProgressWithOnComplete(0);
       navigation.navigate('LevelUp');
     }
   };
@@ -52,7 +52,7 @@ const Main = ({ navigation }) => {
     const updatedValue = { curr_level: ++user.curr_level, curr_exp: exp };
     const updatedUser = Object.assign(user, updatedValue);
     setUser(updatedUser);
-    // update new level and experience of user
+    // update new level and set experience of user to 0 (DB)
     updateUser(updatedUser);
   }
 
