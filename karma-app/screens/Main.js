@@ -10,13 +10,17 @@ import Splash from './Splash';
 const URL = 'http://192.168.1.148:3001'; //131 -> Home
 
 
-const Main = (props) => {
+const Main = ({ navigation }) => {
   // states
   const [actions, setActions] = useState([]);
   const [user, setUser] = useState([]);
   const [filter, setFilter] = useState([]);
   const [progressWithOnComplete, setProgressWithOnComplete] = useState(user.curr_exp);
   const [loading, setLoading] = useState(true);
+
+  // get userID and userToken after login
+  const userID = navigation.getParam('userID', 'No-ID');
+  const userToken = navigation.getParam('token', 'No-TOKEN');
 
   // set width of progress bar
   const barWidth = Dimensions.get('screen').width - 150;
