@@ -31,8 +31,8 @@ const SignIn = ({ navigation }) => {
           alert('Wrong Username! Try again!')
           navigation.navigate('Sign-In');
         } else {
-          passUserIdToMain();
           signInAsync();
+          passUserIdToMain();
         }
       })
       // eslint-disable-next-line no-console
