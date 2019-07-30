@@ -11,8 +11,9 @@ const logo = require('../assets/karma-login.png');
 
 
 const SignIn = (props) => {
-  const userName = '';
-  const password = '';
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+
   const token = uuid();
   const signInAsync = async () => {
     await AsyncStorage.setItem('userToken', token);
@@ -21,9 +22,18 @@ const SignIn = (props) => {
 
   const passUserId = () => {
     props.navigation.navigate('Main', {
-      userID: 1,
+      userName,
+      password,
       token,
     })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setUserName(userName);
+    setPassword(password);
+    signInAsync();
+    passUserId();
   }
 
   return (
@@ -43,22 +53,19 @@ const SignIn = (props) => {
           placeholder='Username'
           value={userName}
           returnKeyType='next'
-          onChangeText={input => userName = input}
+          onChangeText={text => setUserName(text)}
           style={styles.input}
         />
         <TextInput
           placeholder='Password'
           value={password}
-          onChangeText={input => password = input}
+          onChangeText={text => setPassword(text)}
           style={styles.input}
           secureTextEntry={true}
         />
         <View style={styles.button}>
           <Button
-            onPress={() => {
-              signInAsync();
-              passUserId();
-            }}
+            onPress={handleSubmit}
             title='Sign In'
             color='#cc2e5d'
             accessibilityLabel='Click me to sign in'

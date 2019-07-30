@@ -19,8 +19,11 @@ const Main = ({ navigation }) => {
   const [loading, setLoading] = useState(true);
 
   // get userID and userToken after login
-  const userID = navigation.getParam('userID', 'No-ID');
-  const userToken = navigation.getParam('token', 'No-TOKEN');
+  const userName = navigation.getParam('userName', 'No-USER');
+  const password = navigation.getParam('password', 'No-PASSWORD');
+  const token = navigation.getParam('token', 'No-TOKEn');
+
+  console.log(userName, password, token);
 
   // set width of progress bar
   const barWidth = Dimensions.get('screen').width - 150;
@@ -41,7 +44,7 @@ const Main = ({ navigation }) => {
       nextLevel(remainingExp);
       // set progessbar to the overachieved points
       setProgressWithOnComplete(remainingExp);
-      props.navigation.navigate('LevelUp');
+      navigation.navigate('LevelUp');
     }
   };
 
