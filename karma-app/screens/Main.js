@@ -6,10 +6,11 @@ import {
 import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
 import Splash from './Splash';
+// localhost
+const URL = 'http://192.168.1.148:3001'; //131 -> Home
+
 
 const Main = (props) => {
-  // localhost
-  const URL = 'http://192.168.1.148:3001';
   // states
   const [actions, setActions] = useState([]);
   const [user, setUser] = useState([]);
@@ -104,7 +105,7 @@ const Main = (props) => {
   // create Progressbar
   const createProgressbar = () => {
     return (
-      <View style={styles.progessBar}>
+      <>
         <Text>
           Lvl
           {' '}
@@ -127,7 +128,7 @@ const Main = (props) => {
           {' '}
           {user.curr_level + 1}
         </Text>
-      </View>
+      </>
     )
   }
 
@@ -136,7 +137,7 @@ const Main = (props) => {
   } else {
     return (
       <>
-        {createProgressbar()}
+        <View style={styles.progessBar}>{createProgressbar()}</View>
         <FilterAction filter={filterActions} />
         <ActionList actions={filter} addExp={increaseExp} />
       </>
