@@ -27,12 +27,15 @@ const SignIn = ({ navigation }) => {
       }
     })
       .then(response => response.json())
-      .then((username) => {
-        if (username.fail) {
-          alert('wrong password or username')
+      .then((data) => {
+        if (data.fail === 'password') {
+          alert('Wrong Password! Try again!')
+          navigation.navigate('Sign-In');
+        } else if (data.fail === 'username') {
+          alert('Wrong Username! Try again!')
           navigation.navigate('Sign-In');
         } else {
-          passUserId();
+          passUserIdToMain();
           signInAsync();
         }
       })
@@ -47,7 +50,7 @@ const SignIn = ({ navigation }) => {
     navigation.navigate('Main');
   };
 
-  const passUserId = () => {
+  const passUserIdToMain = () => {
     navigation.navigate('Main', {
       userName,
     })
