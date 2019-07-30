@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Text, Image, View, StyleSheet, Button } from 'react-native';
 import LottieView from 'lottie-react-native'
 const logo = require('../assets/karma-logo.png');
@@ -13,9 +13,10 @@ const LevelUp = (props) => {
         <Text h1 style={styles.textUp}>YOU ROCK</Text>
         <View style={styles.lottie}>
           <LottieView
+            resizeMode='cover'
             source={animationData}
             autoPlay
-            loop
+            loop={false}
           />
         </View>
         <Text h2 style={styles.textDown}>Your Karma improved to the next level!</Text>
@@ -40,10 +41,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#f2efed',
   },
-  image: {
-    width: 200,
-    height: 200,
-  },
   topContainer: {
     flex: 2,
     justifyContent: 'center',
@@ -56,15 +53,15 @@ const styles = StyleSheet.create({
     color: '#cc2e5d'
   },
   textDown: {
-    margin: 20,
+    margin: 10,
     fontSize: 15,
   },
   lottie: {
-    width: 800,
-    height: 200,
+    width: 400,
+    height: 320,
   },
   button: {
-    marginTop: 80,
+    marginTop: 20,
   }
 
 });
