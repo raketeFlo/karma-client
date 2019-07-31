@@ -27,8 +27,7 @@ To run the app you need to clone Karma-Server and Karma-Client repositories. Als
 * Server
    * mongod
    * npm run start:dev
-
-### to run it
+   
 * Client
    * npm start
 
