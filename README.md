@@ -25,7 +25,7 @@ To run the app you need to clone Karma-Server and Karma-Client repositories. Als
 
 ### to run it
 * Client
-   npm start
+   * npm start
 
 ### Tech Stack
 * React Native
