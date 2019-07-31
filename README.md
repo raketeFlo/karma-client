@@ -4,7 +4,12 @@
 
 Society is more and more moving towards an individualistic culture. Karma helps you to get ideas of how you can change this trend while gaining experience points for completed good actions.
 
-### Screenshots
+### Screenshot
+
+ LOGIN | MAIN | SUCCESS
+| ------------- | ------------- | ------------- |
+| <img src='./screenshots/Login.png' alt='login' width="250" height="500"> | <img src='./screenshots/Main.png' alt='login' width="250" height="500"> | <img src='./screenshots/Success.png' alt='login' width="250" height="500">
+
    
 
 ### Installation
@@ -34,5 +39,5 @@ To run the app you need to clone Karma-Server and Karma-Client repositories. Als
 * Mongoose
 * MongoDB
 
-###### Developer
+### Developer
 ###### Florian Jost (@steelersbcn)
