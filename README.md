@@ -35,4 +35,4 @@ To run the app you need to clone Karma-Server and Karma-Client repositories. Als
 * MongoDB
 
 ###### Developer
-Florian Jost (@steelersbcn)
+###### Florian Jost (@steelersbcn)
