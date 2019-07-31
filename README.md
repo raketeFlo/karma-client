@@ -11,28 +11,28 @@ Society is more and more moving towards an individualistic culture. Karma helps 
 To run the app you need to clone Karma-Server and Karma-Client repositories. Also you will have to install the latest version of expo client and either and iOs simulator or and Android emulator. For the backend you need to have node.js and mongodb installed.
 
 ### Client
-git clone https://github.com/steelersbcn/karma-client
-npm install
+* git clone https://github.com/steelersbcn/karma-client
+* npm install
 
 ### Server
-git clone https://github.com/steelersbcn/karma-server
-npm install
+* git clone https://github.com/steelersbcn/karma-server
+* npm install
 
 ### to run it
-Server
-mongod
-npm run start:dev
+* Server
+   * mongod
+   * npm run start:dev
 
 ### to run it
-Client
-npm start
+* Client
+   npm start
 
 ### Tech Stack
-React Native
-Expo
-Koa
-Mongoose
-MongoDB
+* React Native
+* Expo
+* Koa
+* Mongoose
+* MongoDB
 
 ###### Developer
 Florian Jost (@steelersbcn)
