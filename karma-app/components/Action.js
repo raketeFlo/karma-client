@@ -32,7 +32,7 @@ const Action = ({ actions, addExp }) => {
           style={styles.cardContainer}>
           <View style={styles.imageContainer}>
             <Image source={icons(actions.category)} style={styles.symbols} />
-            <Text style={styles.points}>+{actions.exp_points} EXP</Text>
+            <Text style={styles.points}>+{actions.exp_points} XP</Text>
           </View>
           <View style={styles.textContainer}><Text style={styles.text}>{actions.description}</Text></View>
           <View style={styles.pointsContainer}></View>

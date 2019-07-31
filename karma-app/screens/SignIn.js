@@ -6,7 +6,7 @@ import uuid from 'uuid/v1';
 import base64 from 'react-native-base64'
 const logo = require('../assets/karma-login.png');
 // localhost
-const URL = 'http://192.168.1.148:3001'; //131 -> Home
+const URL = 'http://192.168.1.148:3001';
 
 
 const SignIn = ({ navigation }) => {
