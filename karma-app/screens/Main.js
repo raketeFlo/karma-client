@@ -6,8 +6,9 @@ import {
 import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
 import Splash from './Splash';
+import { URL, PORT } from 'react-native-dotenv';
 // localhost
-const URL = 'http://192.168.1.148:3001';
+// const URL = 'http://192.168.1.148:3001';
 
 
 const Main = ({ navigation }) => {
@@ -58,7 +59,7 @@ const Main = ({ navigation }) => {
 
   // load user
   useEffect(() => {
-    fetch(`${URL}/user/${userName}`)
+    fetch(`${URL}:${PORT}/user/${userName}`)
       .then(response => response.json())
       .then((data) => {
         if (data[0]) {
@@ -72,7 +73,7 @@ const Main = ({ navigation }) => {
 
   // load all actions
   useEffect(() => {
-    fetch(`${URL}/actions`)
+    fetch(`${URL}:${PORT}/actions`)
       .then(response => response.json())
       .then((data) => {
         setActions(data);
@@ -90,7 +91,7 @@ const Main = ({ navigation }) => {
 
   // update current user experience and level
   const updateUser = (data) => {
-    fetch(`${URL}/user`, {
+    fetch(`${URL}:${PORT}/user`, {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {

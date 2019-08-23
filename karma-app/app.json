@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "karma",
-    "slug": "karma-app",
+    "name": "Karma",
+    "slug": "karma",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [
@@ -25,6 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "\"Do good and good will come to you!\"\n\nSociety is more and more moving towards an individualistic culture. Karma helps you to get ideas of how you can change this trend while gaining experience points for completed good actions.",
+    "githubUrl": "https://github.com/steelersbcn/karma-client"
   }
 }
