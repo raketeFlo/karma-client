@@ -7,8 +7,6 @@ import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
 import Splash from './Splash';
 import { URL, PORT } from 'react-native-dotenv';
-// localhost
-// const URL = 'http://192.168.1.148:3001';
 
 
 const Main = ({ navigation }) => {
