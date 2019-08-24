@@ -30,5 +30,8 @@ To run the app please follow the instructions:
 * Mongoose
 * MongoDB
 
+### Recommendation
+Feel free to have a look at the server of this application: [Karma Server](https://github.com/steelersbcn/karma-server)
+
 ### Developer
 Florian Jost [LinkedIn](https://www.linkedin.com/in/fjost/)
