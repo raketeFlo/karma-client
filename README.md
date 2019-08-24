@@ -16,12 +16,12 @@ Society is more and more moving towards an individualistic culture. Karma helps 
 To run the app please follow the instructions:
 
 * Download Expo Client
-   * iOS: https://itunes.apple.com/app/apple-store/id982107779
-   * Android: https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www
-* Scan the QR Code from this page: https://expo.io/@steelersbcn/karma
-* Login Credential: 
-   * Username: Darthvader
-   * Password: darkside
+   * [iOS](https://itunes.apple.com/app/apple-store/id982107779)
+   * [Android](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www)
+* Scan the QR Code from [Expo.io](https://expo.io/@steelersbcn/karma) 
+* Login credentials: 
+   * Username: *Darthvader*
+   * Password: *darkside*
 
 ### Tech Stack
 * React Native
@@ -31,4 +31,4 @@ To run the app please follow the instructions:
 * MongoDB
 
 ### Developer
-### Florian Jost (@steelersbcn)
+### Florian Jost [LinkedIn](https://www.linkedin.com/in/fjost/)
