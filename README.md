@@ -31,4 +31,4 @@ To run the app please follow the instructions:
 * MongoDB
 
 ### Developer
-### Florian Jost [LinkedIn](https://www.linkedin.com/in/fjost/)
+Florian Jost [LinkedIn](https://www.linkedin.com/in/fjost/)
