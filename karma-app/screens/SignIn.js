@@ -5,7 +5,7 @@ import {
 import uuid from 'uuid/v1';
 import base64 from 'react-native-base64'
 const logo = require('../assets/karma-login.png');
-import { URL, PORT } from 'react-native-dotenv';
+import { URL } from 'react-native-dotenv';
 
 
 const SignIn = ({ navigation }) => {
@@ -15,7 +15,7 @@ const SignIn = ({ navigation }) => {
   // check username + password
   const userCheck = () => {
     const encodedData = base64.encode(`${userName}:${password}`);
-    fetch(`${URL}:${PORT}/sign-in`, {
+    fetch(`${URL}sign-in`, {
       headers: {
         'Authorization': `Basic ${encodedData}`,
         'Content-Type': 'application/json',
