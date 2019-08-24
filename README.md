@@ -2,7 +2,7 @@
 
 "Do good and good will come to you!"
 
-Society is more and more moving towards an individualistic culture. Karma helps you to get ideas of how you can change this trend while gaining experience points for completed good actions.
+Society is more and more moving towards an individualistic culture. Karma helps you to get ideas of how you can change this trend. You will help Darthvader to improve his Karma level while completing good actions in real life.
 
 ### Screenshot
 
@@ -13,23 +13,15 @@ Society is more and more moving towards an individualistic culture. Karma helps 
    
 
 ### Installation
-To run the app you need to clone Karma-Server and Karma-Client repositories. Also you will have to install the latest version of expo client and either an iOS simulator or and Android emulator. For the backend you need to have node.js and mongodb installed.
+To run the app please follow the instructions:
 
-### Client
-* git clone https://github.com/steelersbcn/karma-client
-* npm install
-
-### Server
-* git clone https://github.com/steelersbcn/karma-server
-* npm install
-
-### Run it
-* Server
-   * mongod
-   * npm run start:dev
-   
-* Client
-   * npm start
+* Download Expo Client
+   * iOS: https://itunes.apple.com/app/apple-store/id982107779
+   * Android: https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www
+* Scan the QR Code from this page: https://expo.io/@steelersbcn/karma
+* Login Credential: 
+   * Username: Darthvader
+   * Password: darkside
 
 ### Tech Stack
 * React Native
@@ -39,4 +31,4 @@ To run the app you need to clone Karma-Server and Karma-Client repositories. Als
 * MongoDB
 
 ### Developer
-###### Florian Jost (@steelersbcn)
+### Florian Jost (@steelersbcn)
