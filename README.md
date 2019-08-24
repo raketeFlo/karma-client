@@ -13,7 +13,7 @@ Society is more and more moving towards an individualistic culture. Karma helps 
    
 
 ### Installation
-To run the app please follow the instructions:
+To run the app please follow these instructions:
 
 * Download Expo Client
    * [iOS](https://itunes.apple.com/app/apple-store/id982107779)
