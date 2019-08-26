@@ -29,3 +29,7 @@ node_modules
 # Custom
 private
 dist
+
+
+# Env File
+.env
