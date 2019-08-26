@@ -6,7 +6,7 @@ Society is more and more moving towards an individualistic culture. Karma helps 
 
 ### Screenshot
 
-<img src='./screenshots/Karma.png' alt='login' width="1600" height="800">
+<img src='./screenshots/Karma.png' alt='login' width="1600" height="600">
 
    
 
