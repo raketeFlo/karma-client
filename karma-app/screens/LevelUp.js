@@ -66,8 +66,3 @@ const styles = StyleSheet.create({
 });
 
 export default LevelUp;
-
-/*  <Image
-         style={styles.image}
-         source={logo}
-       /> */

@@ -42,7 +42,6 @@ const SignIn = ({ navigation }) => {
   const signInAsync = async () => {
     await AsyncStorage.setItem('userToken', token);
     await AsyncStorage.setItem('userName', userName);
-    // navigation.navigate('Main');
   };
 
   const passUserIdToMain = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, Modal, StyleSheet, View, ActivityIndicator } from 'react-native';
+import { Modal, StyleSheet, View, ActivityIndicator } from 'react-native';
 
 const Splash = () => {
   return (
