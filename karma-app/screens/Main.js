@@ -6,11 +6,10 @@ import {
 import ActionList from '../components/ActionList';
 import FilterAction from '../components/FilterAction';
 import Splash from './Splash';
-import { URL} from 'react-native-dotenv';
+import { loadUser, loadActions, updateUser } from '../services/ApiClient';
 
 
 const Main = ({ navigation }) => {
-  // states
   const [actions, setActions] = useState([]);
   const [user, setUser] = useState([]);
   const [filter, setFilter] = useState([]);
@@ -24,7 +23,7 @@ const Main = ({ navigation }) => {
   const barWidth = Dimensions.get('screen').width - 150;
 
   // progressbar increase
-  const increaseExp = (value) => {
+  const increaseExp = async (value) => {
     // lower gained exp points per increased level
     const reducedValue = Math.floor(value / user.curr_level);
     const updatedValue = { curr_exp: reducedValue + user.curr_exp };
@@ -35,7 +34,7 @@ const Main = ({ navigation }) => {
       // update current experience of user
       setUser(updatedUser);
       // update current experience of user in database
-      updateUser(updatedUser);
+      await updateUser(updatedUser);
     } else {
       //set user experience to 0
       nextLevel(0);
@@ -44,7 +43,6 @@ const Main = ({ navigation }) => {
       navigation.navigate('LevelUp');
     }
   };
-
 
   // level up
   const nextLevel = (exp) => {
@@ -55,60 +53,29 @@ const Main = ({ navigation }) => {
     updateUser(updatedUser);
   }
 
-  // load user
+  async function loadAppData(userName) {
+    const user = await loadUser(userName);
+    const actions = await loadActions();
+    setUser(user[0]);
+    setProgressWithOnComplete(user[0].curr_exp);
+    setActions(actions);
+    setFilter(actions);
+    // load main.js after 1500ms
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }
+
   useEffect(() => {
-    fetch(`${URL}user/${userName}`)
-      .then(response => response.json())
-      .then((data) => {
-        if (data[0]) {
-          setUser(data[0]);
-          setProgressWithOnComplete(data[0].curr_exp);
-        }
-      })
-      // eslint-disable-next-line no-console
-      .catch(error => console.error(error));
-  }, []);
-
-  // load all actions
-  useEffect(() => {
-    fetch(`${URL}actions`)
-      .then(response => response.json())
-      .then((data) => {
-        setActions(data);
-        setFilter(data);
-        // load main.js after 1500ms
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000);
-
-      })
-      // eslint-disable-next-line no-console
-      .catch(error => console.error(error));
-  }, []);
+    loadAppData(userName);
+  }, [userName]);
 
 
-  // update current user experience and level
-  const updateUser = (data) => {
-    fetch(`${URL}user`, {
-      method: 'PUT',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }).then(response => response.json())
-      // eslint-disable-next-line no-console
-      .then(updatedUser => setUser(updatedUser))
-      // eslint-disable-next-line no-console
-      .catch(error => console.error(error));
-  };
-
-  // filter for actions
   const filterActions = (difficulty) => {
     const filteredActions = actions.filter(elements => elements.difficulty === difficulty);
     setFilter(filteredActions);
   };
 
-  // create Progressbar
   const createProgressbar = () => {
     return (
       <>
@@ -138,7 +105,7 @@ const Main = ({ navigation }) => {
     )
   }
 
-  if (loading === true) {
+  if (loading) {
     return <Splash />
   } else {
     return (
