@@ -5,7 +5,7 @@ import {
 import uuid from 'uuid/v1';
 import base64 from 'react-native-base64'
 const logo = require('../assets/karma-login.png');
-import { URL } from 'react-native-dotenv';
+import { signIn } from '../services/ApiClient';
 
 
 const SignIn = ({ navigation }) => {
@@ -13,29 +13,20 @@ const SignIn = ({ navigation }) => {
   const [password, setPassword] = useState('');
 
   // check username + password
-  const userCheck = () => {
+  const userCheck = async () => {
     const encodedData = base64.encode(`${userName}:${password}`);
-    fetch(`${URL}sign-in`, {
-      headers: {
-        'Authorization': `Basic ${encodedData}`,
-        'Content-Type': 'application/json',
-      }
-    })
-      .then(response => response.json())
-      .then((data) => {
-        if (data.fail === 'password') {
-          alert('Wrong Password! Try again!')
-          navigation.navigate('Sign-In');
-        } else if (data.fail === 'username') {
-          alert('Wrong Username! Try again!')
-          navigation.navigate('Sign-In');
-        } else {
-          signInAsync();
-          passUserIdToMain();
-        }
-      })
-      // eslint-disable-next-line no-console
-      .catch(error => console.error(error));
+    const response = await signIn(encodedData);
+
+    if (response.fail === 'password') {
+      alert('Wrong Password! Try again!')
+      navigation.navigate('Sign-In');
+    } else if (response.fail === 'username') {
+      alert('Wrong Username! Try again!')
+      navigation.navigate('Sign-In');
+    } else {
+      signInAsync();
+      passUserIdToMain();
+    }
   };
 
   const token = uuid();

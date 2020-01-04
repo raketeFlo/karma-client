@@ -2,28 +2,11 @@ import React from 'react';
 import {
   TouchableOpacity, StyleSheet, Image, View, Text,
 } from 'react-native';
-const people = require('../assets/Icons/b2b.png');
-const volunteer = require('../assets/Icons/charity.png');
-const transport = require('../assets/Icons/bus.png');
-const environment = require('../assets/Icons/planet-earth.png');
-const relationship = require('../assets/Icons/friends.png');
+import { showIcon } from '../utils/helpers';
+
 
 
 const Action = ({ actions, addExp }) => {
-  // conditional rendering of icons
-  const icons = (category) => {
-    if (category === 'People') {
-      return people;
-    } else if (category === 'Relationship') {
-      return relationship;
-    } else if (category === 'Transports') {
-      return transport;
-    } else if (category === 'Volunteering') {
-      return volunteer;
-    } else if (category === 'Environment') {
-      return environment;
-    }
-  };
 
   return (
     <TouchableOpacity onPress={() => addExp(actions.exp_points)}>
@@ -31,7 +14,7 @@ const Action = ({ actions, addExp }) => {
         <View
           style={styles.cardContainer}>
           <View style={styles.imageContainer}>
-            <Image source={icons(actions.category)} style={styles.symbols} />
+            <Image source={showIcon(actions.category)} style={styles.symbols} />
             <Text style={styles.points}>+{actions.exp_points} XP</Text>
           </View>
           <View style={styles.textContainer}><Text style={styles.text}>{actions.description}</Text></View>
